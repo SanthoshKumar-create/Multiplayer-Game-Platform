@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SANTHOSH | Game Session Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">SG</div>
+    <div>
+      <p class="eyebrow">SANTHOSH · AWS CLOUD PROJECT</p>
+      <h1>Game Session Manager</h1>
+    </div>
+    <span class="cloud-tag">SERVERLESS</span>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <p class="eyebrow">MULTIPLAYER LOBBY CONTROL</p>
+      <h2>Create a room.<br><span>Bring your players together.</span></h2>
+      <p class="muted">Create a session, invite players with a session ID, and track lobby status.</p>
+      <div class="service-list">
+        <span>S3</span><span>API Gateway</span><span>Lambda</span><span>DynamoDB</span><span>SQS</span><span>SNS</span>
+      </div>
+    </section>
+
+    <section class="panel-grid">
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">01 / HOST</p><h3>Create a game room</h3></div><span class="step">01</span></div>
+        <form id="create-form">
+          <label for="host">Host player name</label>
+          <input id="host" name="host" maxlength="30" placeholder="Enter your name" required>
+          <label for="maxPlayers">Maximum players</label>
+          <select id="maxPlayers" name="maxPlayers">
+            <option value="2">2 players</option><option value="3">3 players</option>
+            <option value="4" selected>4 players</option><option value="5">5 players</option>
+            <option value="6">6 players</option><option value="8">8 players</option>
+          </select>
+          <button type="submit">Create session <span>↗</span></button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">02 / PLAYER</p><h3>Join a session</h3></div><span class="step">02</span></div>
+        <form id="join-form">
+          <label for="sessionId">Session ID</label>
+          <input id="sessionId" name="sessionId" maxlength="40" placeholder="Paste session ID" required>
+          <label for="playerName">Your player name</label>
+          <input id="playerName" name="playerName" maxlength="30" placeholder="Enter your name" required>
+          <button class="secondary" type="submit">Join session <span>↗</span></button>
+        </form>
+      </article>
+    </section>
+
+    <section class="panel details">
+      <div class="panel-heading">
+        <div><p class="eyebrow">03 / LIVE LOOKUP</p><h3>Session details</h3></div>
+        <span id="status-pill" class="status">NO SESSION</span>
+      </div>
+      <form id="lookup-form" class="lookup">
+        <input id="lookupId" placeholder="Enter a session ID to look up" required>
+        <button type="submit" class="small-button">Refresh</button>
+      </form>
+      <div id="session-view" class="empty-state">Your session information will appear here.</div>
+    </section>
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+  </main>
+  <footer>Built with Amazon Web Services <span>·</span> Multiplayer Game Session Management Platform</footer>
+  <script src="app.js"></script>
+</body>
+</html>
